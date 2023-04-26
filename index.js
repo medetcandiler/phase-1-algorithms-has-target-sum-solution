@@ -1,14 +1,28 @@
+// function hasTargetSum(array, target) {
+//   // Write your algorithm here
+//   for( let x = 0; x < array.length; x++){
+//     for( let y = x+1; y < array.length; x++){
+//       if( array[x] + array[y] === target){
+//         return true;
+//       }
+//     }
+//   }
+//   return false;
+// }
+
 function hasTargetSum(array, target) {
   // Write your algorithm here
-  for( let x = 0; x < array.length; x++){
-    for( let y = x+1; y < array.length; x++){
-      if( array[x] + array[y] === target){
-        return true;
-      }
-    }
+  let seenNumbers = {};
+  for ( let item of array ){
+    let complement = target - item;
+    if( seenNumbers[complement]) return true;
+    seenNumbers[item] = true
   }
-  return false;
+  return false; 
 }
+//  for this algorithm the Big O time complextiy is 
+// runtime = O(n)
+// space = O(n)
 
 
 
@@ -50,6 +64,3 @@ if (require.main === module) {
 
 module.exports = hasTargetSum;
 
-let seenNumbers = {}
-seenNumbers[2] = true
-console.log(seenNumbers[2], 'trying')
